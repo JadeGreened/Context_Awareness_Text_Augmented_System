@@ -1,3 +1,6 @@
+import queue
+
+import pyaudio
 import requests
 import os
 
@@ -12,6 +15,8 @@ import google.generativeai as genai
 from pynput import keyboard
 
 import threading
+
+from Components.Video_Component import VideoComponent
 from viewer import hl2ss
 from viewer import hl2ss_lnm
 from viewer import hl2ss_rus
@@ -24,11 +29,10 @@ from urllib.parse import unquote_plus, parse_qs
 
 # To get the video stream
 class VideoGraper:
-    def __init__(self, ip, enable_mrc):
+    def __init__(self, ip):
         self._ip = ip
-        self._enable_mrc = enable_mrc
 
-    def get_client(self):
+    def get_video_client(self):
         # Settings --------------------------------------------------------------------
         # HoloLens address
         host = self._ip
@@ -38,7 +42,7 @@ class VideoGraper:
         # 2: query calibration (single transfer)
         mode = hl2ss.StreamMode.MODE_0
         # Enable Mixed Reality Capture (Holograms)
-        enable_mrc = self._enable_mrc
+        enable_mrc = True
         # Camera parameters
         width = 1920
         height = 1080
@@ -64,8 +68,73 @@ class VideoGraper:
                                  framerate=framerate, divisor=divisor, profile=profile, decoded_format=decoded_format)
         return client
 
-    def get_ip(self):
-        return self._ip
+
+class AudioGraper:
+    def __init__(self, ip):
+        self._ip = ip
+
+    def pcmworker(self, pcmqueue):
+        enable = True
+        p = pyaudio.PyAudio()
+        stream = p.open(format=self.audio_format, channels=1, rate=hl2ss.Parameters_MICROPHONE.SAMPLE_RATE, output=True)
+        stream.start_stream()
+        while (enable):
+            stream.write(pcmqueue.get())
+        stream.stop_stream()
+        stream.close()
+
+    def get_audio_client(self):
+        # Channel
+        # Options:
+        # hl2ss.Parameters_MICROPHONE.ARRAY_TOP_LEFT
+        # hl2ss.Parameters_MICROPHONE.ARRAY_TOP_CENTER
+        # hl2ss.Parameters_MICROPHONE.ARRAY_TOP_RIGHT
+        # hl2ss.Parameters_MICROPHONE.ARRAY_BOTTOM_LEFT
+        # hl2ss.Parameters_MICROPHONE.ARRAY_BOTTOM_RIGHT
+        self.channel = hl2ss.Parameters_MICROPHONE.ARRAY_TOP_LEFT
+
+        # ------------------------------------------------------------------------------
+
+        self.audio_format = pyaudio.paFloat32
+        self.pcmqueue = queue.Queue()
+        thread = threading.Thread(target=self.pcmworker, args=(self.pcmqueue,))
+        thread.start()
+        client = hl2ss_lnm.rx_microphone(self._ip, hl2ss.StreamPort.MICROPHONE, profile=hl2ss.AudioProfile.RAW,
+                                         level=hl2ss.AACLevel.L5)
+        return client
+
+
+class IMUGraper:
+    def __init__(self, ip):
+        self._ip = ip
+
+
+    def get_imu_client(self):
+        # Port
+        # Options:
+        # hl2ss.StreamPort.RM_IMU_ACCELEROMETER
+        # hl2ss.StreamPort.RM_IMU_GYROSCOPE
+        # hl2ss.StreamPort.RM_IMU_MAGNETOMETER
+        port = hl2ss.StreamPort.RM_IMU_ACCELEROMETER
+
+        # Operating mode
+        # 0: samples
+        # 1: samples + rig pose
+        # 2: query calibration (single transfer)
+        mode = hl2ss.StreamMode.MODE_1
+        client = hl2ss_lnm.rx_rm_imu(self._ip, port, mode=mode)
+        return client
+
+class EyegazeGraper:
+    def __init__(self, ip):
+        self._ip = ip
+
+    def get_eyegaze_client(self):
+        # Target Frame Rate
+        # Options: 30, 60, 90
+        fps = 30
+        client = hl2ss_lnm.rx_eet(self._ip, hl2ss.StreamPort.EXTENDED_EYE_TRACKER, fps=fps)
+        return client
 
 
 # The AI Agent for data processing
@@ -370,41 +439,192 @@ def make_predictions(agent):
         time.sleep(2)
 
 
+
+
+
+
+
+
+
+
 lock = threading.Lock()
 thread_created = False
 
 
-if __name__ == '__main__':
-    vg = VideoGraper("192.168.3.34", True)
-    thread_created = False
-    enable = True
-    agent = Agent()
-    agent.load_files()
-    agent.clear_queue("python")
-    agent.clear_queue("unity")
-    client = vg.get_client()
-    client.open()
-    listener = keyboard.Listener(on_press=on_press)
-    listener.start()
+# if __name__ == '__main__':
+#     ip = "192.168.3.34"
+#     thread_created = False
+#     enable = True
+#     enable_Video = True
+#     enable_Eyetracking = True
+#     enable_IMU = True
+#     enable_Audio = True
+#
+#     # agent = Agent()
+#     # agent.load_files()
+#     # agent.clear_queue("python")
+#     # agent.clear_queue("unity")
+#
+#     # 视频
+#     if enable_Video:
+#         vg = VideoGraper(ip)
+#         video_client = vg.get_video_client()
+#         video_client.open()
+#
+#     # 眼动追踪
+#     if enable_Eyetracking:
+#         eg = EyegazeGraper(ip)
+#         eyegaze_client = eg.get_eyegaze_client()
+#         eyegaze_client.open()
+#
+#     # 惯性测量单元（IMU）
+#     if enable_IMU:
+#         imu = IMUGraper(ip)
+#         imu_client = imu.get_imu_client()
+#         imu_client.open()
+#
+#     # 音频
+#     if enable_Audio:
+#         ag = AudioGraper(ip)
+#         audio_client = ag.get_audio_client()
+#         audio_client.open()
+#
+#     listener = keyboard.Listener(on_press=on_press)
+#     listener.start()
+#
+#     # #get the audio array
+#     # audio_thread = threading.Thread(target=ag.pcmworker, args=(ag.pcmqueue,))
+#     # audio_thread.start()
+#
+#     # start the prediction task
+#     # background_thread = threading.Thread(target=make_predictions,args=(agent,))
+#     # background_thread.start()
+#
+#
+#
+#
+#     while (enable):
+#         if enable_Video:
+#             try:
+#                 video_data = video_client.get_next_packet()
+#                 cv2.imshow('Video', video_data.payload.image)
+#                 cv2.waitKey(1)
+#             except Exception as e:
+#                 print(f"Error fetching video packet: {e}")
+#                 enable = False  # Optionally stop the loop if critical error occurs
+#
+#         if enable_Eyetracking:
+#             try:
+#                 eyegaze_data = eyegaze_client.get_next_packet()
+#                 eet = hl2ss.unpack_eet(eyegaze_data.payload)
+#                 print("-------------------------------------Eye tracking-------------------------------------")
+#                 print(f'Tracking status at time {eyegaze_data.timestamp}')
+#                 print('Pose')
+#                 print(eyegaze_data.pose)
+#                 print(f'Calibration: Valid={eet.calibration_valid}')
+#                 print(
+#                     f'Combined eye gaze: Valid={eet.combined_ray_valid} Origin={eet.combined_ray.origin} Direction={eet.combined_ray.direction}')
+#                 print(
+#                     f'Left eye gaze: Valid={eet.left_ray_valid} Origin={eet.left_ray.origin} Direction={eet.left_ray.direction}')
+#                 print(
+#                     f'Right eye gaze: Valid={eet.right_ray_valid} Origin={eet.right_ray.origin} Direction={eet.right_ray.direction}')
+#                 print(f'Left eye openness: Valid={eet.left_openness_valid} Value={eet.left_openness}')
+#                 print(f'Right eye openness: Valid={eet.right_openness_valid} Value={eet.right_openness}')
+#                 print(f'Vergence distance: Valid={eet.vergence_distance_valid} Value={eet.vergence_distance}')
+#             except Exception as e:
+#                 print(f"Error fetching eyetracking data: {e}")
+#
+#         if enable_IMU:
+#             try:
+#                 imu_data = imu_client.get_next_packet()
+#                 print("------------------------------------------IMU-----------------------------------------")
+#                 print(f'Pose at time {imu_data.timestamp}')
+#                 print(imu_data.pose)
+#
+#                 imu = hl2ss.unpack_rm_imu(imu_data.payload)
+#                 count = imu.get_count()
+#                 sample = imu.get_frame(0)
+#                 print(f'Got {count} samples at time {imu_data.timestamp}')
+#                 print(
+#                     f'First sample: sensor_ticks={sample.vinyl_hup_ticks} soc_ticks={sample.soc_ticks} x={sample.x} y={sample.y} z={sample.z} temperature={sample.temperature}')
+#             except Exception as e:
+#                 print(f"Error fetching IMU data: {e}")
+#
+#         # if enable_Audio:
+#         #     try:
+#         #         audio_data = audio_client.get_next_packet()
+#         #         audio = audio_data.payload[0, ag.channel::hl2ss.Parameters_MICROPHONE.ARRAY_CHANNELS]
+#         #         ag.pcmqueue.put(audio.tobytes())
+#         #         print("------------------------------------------audio-----------------------------------------")
+#         #     except Exception as e:
+#         #         print(f"Error fetching audio data: {e}")
+#
+#         # if not thread_created:
+#         #     with lock:
+#         #         if not thread_created:
+#         #             t = threading.Thread(target=agent_on_invoke, args=(agent, video_data.payload.image))
+#         #             t.start()
+#         #             thread_created = True
+#
+#     video_client.close()
+#     eyegaze_client.close()
+#     imu_client.close()
+#     ag.pcmqueue.put(b'')
+#     # audio_thread.join()
+#     listener.join()
+#
+#     hl2ss_lnm.stop_subsystem_pv(vg.get_ip(), hl2ss.StreamPort.PERSONAL_VIDEO)
 
 
-    # start the prediction task
-    background_thread = threading.Thread(target=make_predictions,args=(agent,))
-    background_thread.start()
+class MainSys:
+    def __init__(self):
+        self.file_name = "database.txt"
+        self.lock = threading.Lock()
+
+    def read_file(self):
+        with self.lock:
+            try:
+                with open(self.file_name, 'r') as file:
+                    data = file.read()
+                return data
+            except FileNotFoundError:
+                print("Error: The file does not exist.")
+                return None
+            except IOError as e:
+                print(f"IO Error occurred: {e}")
+                return None
+
+    def write_file(self, text):
+        with self.lock:
+            try:
+                with open(self.file_name, 'a') as file:
+                    file.write(text)
+            except IOError as e:
+                print(f"IO Error occurred: {e}")
+
+    def read_then_write(self, text):
+        # 先读取文件内容
+        data = self.read_file()
+        if data is not None:
+            print("Read from file:", data)
+            # 读取的数据展示后, 只需写入新数据
+            self.write_file(text + "\n")  # 确保文本换行
+            print("Written to file:", text)
+        else:
+            # 如果文件不存在或读取失败，直接写入新数据
+            self.write_file(text + "\n")
+            print("Written to file:", text)
 
 
-    while (enable):
-        data = client.get_next_packet()
-        cv2.imshow('Video', data.payload.image)
-        if not thread_created:
-            with lock:
-                if not thread_created:
-                    t = threading.Thread(target=agent_on_invoke, args=(agent, data.payload.image))
-                    t.start()
-                    thread_created = True
-        cv2.waitKey(1)
+if __name__ == "__main__":
+    mainSys = MainSys()
+    # change your ip here
+    ip = "192.168.3.34"
+    process_thread_circle = 1
+    video_component = VideoComponent(ip, mainSys)
 
-    client.close()
-    listener.join()
+    video_thread = threading.Thread(target=video_component.component_on_invoke)
+    video_thread.start()
 
-    hl2ss_lnm.stop_subsystem_pv(vg.get_ip(), hl2ss.StreamPort.PERSONAL_VIDEO)
+
+
