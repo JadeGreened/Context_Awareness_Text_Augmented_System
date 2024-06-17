@@ -622,12 +622,12 @@ if __name__ == "__main__":
     # change your ip here
     ip = "192.168.3.34"
     process_thread_circle = 1
-    # video_component = VideoComponent(ip, mainSys)
+    video_component = VideoComponent(ip, mainSys)
     imu_Component = IMU_Component(ip, mainSys)
 
-    # video_thread = threading.Thread(target=video_component.video_component_on_invoke)
-    # video_thread.start()
-
+    video_thread = threading.Thread(target=video_component.video_component_on_invoke)
+    video_thread.start()
+    #
     imu_thread = threading.Thread(target=imu_Component.imu_component_on_invoke)
     imu_thread.start()
 
