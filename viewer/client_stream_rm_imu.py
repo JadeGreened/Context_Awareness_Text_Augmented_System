@@ -25,7 +25,7 @@ host = "192.168.3.34"
 # hl2ss.StreamPort.RM_IMU_ACCELEROMETER
 # hl2ss.StreamPort.RM_IMU_GYROSCOPE
 # hl2ss.StreamPort.RM_IMU_MAGNETOMETER
-port = hl2ss.StreamPort.RM_IMU_ACCELEROMETER
+port = hl2ss.StreamPort.RM_IMU_MAGNETOMETER
 
 # Operating mode
 # 0: samples
@@ -64,7 +64,7 @@ while (enable):
     imu_data = hl2ss.unpack_rm_imu(data.payload)
     count = imu_data.get_count()
     sample = imu_data.get_frame(0)
-    
+
     print(f'Got {count} samples at time {data.timestamp}')
     print(f'First sample: sensor_ticks={sample.vinyl_hup_ticks} soc_ticks={sample.soc_ticks} x={sample.x} y={sample.y} z={sample.z} temperature={sample.temperature}')
 
