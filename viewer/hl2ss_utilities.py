@@ -8,11 +8,11 @@ import numpy as np
 import time
 import cv2
 import av
-import hl2ss
-import hl2ss_mp
-import hl2ss_lnm
-import hl2ss_io
-import hl2ss_3dcv
+from viewer import hl2ss
+from viewer import hl2ss_mp
+from viewer import hl2ss_lnm
+from viewer import hl2ss_io
+from viewer import hl2ss_3dcv
 
 
 #------------------------------------------------------------------------------

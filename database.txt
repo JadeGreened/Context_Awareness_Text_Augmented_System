@@ -1,52 +1,272 @@
-"Focused on the screen, a person busy at work in their home office."
-"Focused on cracking the code in the digital realm."
-"Three individuals working together in a high-tech studio environment, focused on their computer screens."
-Exploring the wonders of technology and innovation in a high-tech laboratory setting.
-"Three individuals collaborating on a project in front of a computer screen in a professional setting."
-"Two people working together in front of a computer screen, brainstorming and collaborating in a digital workspace."
-"Focused in the digital realm, one person at work in a computer room."
-"Busy day in the tech hub with multiple users at workstations."
-"Focused on the task at hand, one person works diligently at their computer station."
-"Cutting-edge technology at work in the laboratory"
-"Three individuals working diligently in a bustling computer room."
-Three individuals working together in a high-tech lab, surrounded by cutting-edge technology.
-"Three professionals working together in a high-tech environment."
-"Focused on the screen, diving into the digital world of work."
-"Two individuals collaborating on a project in a tech-filled workspace."
-"Focused on the task at hand, a computer user diligently works at their workstation in a cozy home office."
-"Focused individual working diligently in the heart of a high-tech computing hub."
-"Three individuals deep in concentration at their workstations in the digital command center."
-"Focused and in control at the computer workstation."
 
-The user is currently Laying
-The user is currently Laying
-The user is currently Laying
-The user is currently Laying
-The user is currently Laying
-The user is currently Laying
-The user is currently Laying
-The user is currently Laying
-The user is currently Laying
-The user is currently Laying
-The user is currently Laying
-The user is currently Laying
-The user is currently Laying
-The user is currently Laying
-The user is currently Laying
-The user is currently Laying
-The user is currently Laying
-"Focused and in control, the lone individual works diligently in the heart of technology."
-The user is currently Laying
-The user is currently Laying
-The user is currently Laying
-The user is currently Laying
-The user is currently Laying
-"Silent screens hum with data in a futuristic control room."
-The user is currently Laying
-The user is currently Laying
-The user is currently Laying
-The user is currently Laying
-The user is currently Laying
-The user is currently Laying
-"Three individuals collaborating at a high-tech workstation in a modern office setting."
-The user is currently Laying
+The user is currently Standing
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is speaking:ご視聴ありがとうございました
+The user is currently Standing
+The user is looking front
+The user is speaking:ご視聴ありがとうございました
+"Three individuals hard at work in a modern office space, focused on their computer screens."
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is speaking:チャンネル登録をお願いいたします。
+The user is currently Standing
+The user is looking front
+The user is speaking:ご視聴ありがとうございました
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+"Busy day at the office - multiple screens and people hard at work"
+The user is currently Standing
+The user's gaze is : down-right
+The user is currently Standing
+The user's gaze is : down-right
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is speaking:ご視聴ありがとうございました
+The user is currently Standing
+The user is looking front
+"Three scientists working together in a high-tech research lab, analyzing data on their computer screens."
+The user is speaking:OK,現在就是
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is speaking:ok现在就是我把四个模特都做了一下 eye tracking, video, and 还有
+The user is currently Standing
+The user is speaking:就是他那个IMU还有他
+The user's gaze is : down-left
+"Three people hard at work in their home office, making the most of their technology."
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is speaking:就是他那个IMU还有他
+A futuristic computer display in a high-tech laboratory.
+The user is currently Standing
+The user's gaze is : down-right
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+"Focused and determined, the lone individual in the tech hub works diligently among the monitors and screens."
+The user is currently Standing
+The user is looking front
+The user is speaking:OK,我现在就把四个模材都做了一下 Eye Tracking Video
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is speaking:还有 IMU 和 和 audio 都加上去了 现在这都是他这个清景的不断的感知 这都是在刷 这个是
+"Focused at work in the command center of technology."
+The user is currently Standing
+The user is looking front
+The user is speaking:就是那个数据延迟有一点
+The user is currently Standing
+The user is looking front
+The user is speaking:就是那个数据延迟有一点 那还行吗 这个线程开的太多了 我不知道
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is speaking:就是那个数据延迟有一点 那还行吗 这个线程开的太多了 我不知道他这里面到底会不会有太大的问题
+The user is speaking:We'll come back to that in just a moment.
+"Exploring the world of technology and science in a high-tech laboratory setting."
+The user is currently Standing
+The user is looking front
+The user is speaking:我看它这个到底能坚持多久
+The user is currently Standing
+The user is looking front
+The user is speaking:我看他这个到底能坚持多久 然后
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is speaking:我看他这个到底能坚持多久 然后 然后差不多所有的东西都会被存在这个地方
+"Focused and productive in front of the digital command center."
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is speaking:我看他这个到底能坚持多久 然后 然后差不多所有的东西都会被存在这个地方
+The user is currently Standing
+The user is looking front
+The user is speaking:这里用的是中文
+The user is currently Standing
+The user is looking front
+The user is speaking:这里用的是中文 这里用的是中文所以会有乱码 这个我可以等会去看一下
+A person working diligently at a computer in a high-tech environment.
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is speaking:这里用的是中文 这里用的是中文所以会有乱码 这个我可以等会去看一下 刚才贴了点MU
+"Focused and diligent, the computer user at work in a busy control center."
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+"Focused on the screen, the lone figure navigates a digital world of possibilities."
+The user is speaking:用Whisper就可以把这个识别出来 这个是那个语言的描述 这个是IMU数据 这个是眼动
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+"Focused and intent at the control center of technology."
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is speaking:这个是 这个是说的话 额 这个 嗯 就是IMU数据可能会有点问题 这个
+The user is currently Standing
+The user is looking front
+The user is speaking:我拿到训练机它更倾向于每次都预测到是一个东西
+The user is currently Standing
+The user is looking front
+The user is speaking:我拿到训练机它更倾向于每次都预测到是一个东西 因为它那个数据觉得维度太大了 它特征控制
+The user is currently Standing
+The user is looking front
+"In the midst of technological wonder, one person focuses on the task at hand in the control center."
+The user is currently Standing
+The user is looking front
+The user is speaking:我那个拿到训练级他更倾向于每次都预测到是一个东西 因为他那个数据级的维度太大了 他特征工程做的很多 我就
+The user is speaking:拿了几个那个
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is speaking:拿了几个我认为的维度
+The user is currently Standing
+The user is looking front
+"Focused on the task at hand in the digital hub of productivity."
+The user is speaking:拿了几个我认为的维度 就把认为可以用的维度直接拿来训练
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+"Focused on the task at hand in the heart of the technology hub."
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is speaking:其实我感觉效果一般嘛 那个accuracy还挺低的 0.24左右 这个这个回去我再调一调 然后 差不多就是这样 这个一直在跑
+The user is speaking:呃对这个这里面
+The user is currently Standing
+The user is looking front
+"Two people working together at a computer station in a bustling office setting."
+The user is currently Standing
+The user is looking front
+The user is speaking:那对这个这里面那个数据是中文字幕君哟
+The user is currently Standing
+The user is looking front
+The user is speaking:那对这个这里面那个数据是中文是可以被弄出来 我这个呃翻译
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is speaking:那对这个这里面那个数据是中文是可以被弄出来 我这个呃翻译这个不是
+The user is speaking:呃这个这个模型用的是那个whisper
+The user is currently Standing
+The user is looking front
+"Lost in the digital world, a lone figure navigates the sea of screens in their home office."
+The user is currently Standing
+The user is looking front
+The user is speaking:呃这个是这个模型用的是那个Whisper OpenAI的库
+The user is currently Standing
+The user is looking front
+The user is speaking:呃这个这个模型用的是那个whisper openai的库 这就是不断生成的数据 这个数
+The user is currently Standing
+The user is looking front
+The user is speaking:呃这个是这个模型用的是那个whisper openai的库 这就是不断生成的这个频率可能有点快 我现在在抗压测试 我看他
+The user is looking front
+The user is currently Standing
+The user is speaking:这个到底能跑多久
+"Focused on the screen, the computer user is hard at work in their digital domain."
+The user is currently Standing
+The user's gaze is : down-right
+The user is speaking:这个到底能跑多久 然后差不多现在就是这样 哦对
+The user is looking front
+The user is currently Standing
+The user is speaking:这个到底能跑多久 然后差不多现在就是这样 对还有那个关于就是Audio我听了
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is speaking:这个到底能跑多久 然后差不多现在就是这样 对还有那个关于就是Audio 我听了我我注意到你那个文章里面写了那个
+"Focused individual working in a high-tech computer control room."
+The user is speaking:这两个确实是不一样的
+The user is looking front
+The user is currently Standing
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is looking front
+The user is currently Standing
+"Focused individual working diligently at their computer station in a busy control room setting."
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is speaking:这两个确实是不一样的东西 但是我目前确实也没有看到有什么模型可以把周围的环境的声音变成
+The user is looking front
+The user is currently Standing
+The user is speaking:可以看到的描述性的语句 这个如果你知道有一些模型的话可以
+"Focused work at the control center, monitoring screens with precision."
+The user is looking front
+The user is currently Standing
+The user is looking front
+The user is currently Standing
+The user is currently Standing
+The user is looking front

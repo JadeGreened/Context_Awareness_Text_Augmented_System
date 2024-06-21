@@ -19,7 +19,9 @@ class IMU_Component:
         # 1: samples + rig pose
         # 2: query calibration (single transfer)
         self.mode = hl2ss.StreamMode.MODE_0
+        self.columns = np.array([0, 1, 2, 120, 121, 122])
         trainX, trainy, testX, testy = self.load_datasets()
+        selected_columns = trainX[:, self.columns]
         # SVM algorithm
         self.model = SVC(probability=True, gamma='auto')
         self.model.fit(trainX, trainy)
@@ -56,19 +58,19 @@ class IMU_Component:
         client = hl2ss_lnm.rx_rm_imu(self.ip, port, mode=self.mode)
         return client
 
-
     def make_prediction(self, data):
-        label = np.array(["Walking","Upstairs","Downstairs","Sitting","Standing","Laying"])
-        print(self.model.predict(data)[0])
-        motion = label[int(self.model.predict(data)[0])+1]
+        label = np.array(["Walking", "Upstairs", "Downstairs", "Sitting", "Standing", "Laying"])
+        prediction_index = int(self.model.predict(data)[0])  # 只调用一次预测
+        print(prediction_index)
+        motion = label[prediction_index]  # 直接使用预测索引
         print(motion)
         text = "The user is currently " + motion
         self.mainSys.read_then_write(text)
 
-    def replace_with_combined_data(self, combined_data, columns):
+    def replace_with_combined_data(self, combined_data):
 
         # 创建索引映射，根据 columns 将 combined_data 映射到相应的列平均值
-        for i, col_index in enumerate(columns):
+        for i, col_index in enumerate(self.columns):
             if col_index < len(self.data_mean):  # 确保索引不超出范围
                 self.data_mean[col_index] = combined_data[i]
 
@@ -95,7 +97,7 @@ class IMU_Component:
             print('Accelerometer: x: ', sample_acc.x,", y: ", sample_acc.y,", z: ",sample_acc.z)
             print('Gyroscope: x: ', sample_gyro.x,", y: ", sample_gyro.y,", z: ",sample_gyro.z)
             combined_data = np.array([sample_acc.x,sample_acc.y,sample_acc.z, sample_gyro.x, sample_gyro.y, sample_gyro.z])
-            self.replace_with_combined_data(combined_data,columns)
+            self.replace_with_combined_data(combined_data)
             data_for_inference = self.data_mean
             data_for_inference = data_for_inference.reshape(1, -1)
             self.make_prediction(data_for_inference)

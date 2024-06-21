@@ -1,7 +1,7 @@
 
 import struct
 import types
-import hl2ss
+from viewer import hl2ss
 
 
 _MAGIC = 'HL2SSV23'

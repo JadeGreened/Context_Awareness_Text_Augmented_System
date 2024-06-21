@@ -5,6 +5,8 @@
 # Only one channel is played at a time.
 # Press esc to stop.
 #------------------------------------------------------------------------------
+import sys
+import time
 
 from pynput import keyboard
 
@@ -18,7 +20,7 @@ import threading
 # Settings --------------------------------------------------------------------
 
 # HoloLens address
-host = "192.168.1.7"
+host = "192.168.3.34"
 
 # Channel
 # Options:
@@ -41,7 +43,10 @@ def pcmworker(pcmqueue):
     stream = p.open(format=audio_format, channels=1, rate=hl2ss.Parameters_MICROPHONE.SAMPLE_RATE, output=True)
     stream.start_stream()
     while (enable):
-        stream.write(pcmqueue.get())
+        data = pcmqueue.get()
+        stream.write(data)
+        data_read = stream.read(data)
+        print(data_read)
     stream.stop_stream()
     stream.close()
 
@@ -58,11 +63,25 @@ listener.start()
 
 client = hl2ss_lnm.rx_microphone(host, hl2ss.StreamPort.MICROPHONE, profile=hl2ss.AudioProfile.RAW, level=hl2ss.AACLevel.L5)
 client.open()
+pcm_list = []
+last_time = time.time()
 
 while (enable): 
     data = client.get_next_packet()
     audio = data.payload[0, channel::hl2ss.Parameters_MICROPHONE.ARRAY_CHANNELS]
     pcmqueue.put(audio.tobytes())
+    pcm_list.append(audio.tobytes)
+    current_time = time.time()
+    print(audio)
+    print(sys.getsizeof(audio))
+    print(audio.shape)
+    print("-----------------------------------")
+    print(audio.tobytes())
+    time_diff = current_time - last_time
+    print(f"Time since last packet: {time_diff} seconds")
+    print(len(pcm_list))
+    last_time = current_time
+
 
 client.close()
 

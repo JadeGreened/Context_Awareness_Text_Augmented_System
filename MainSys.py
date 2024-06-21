@@ -16,8 +16,10 @@ from pynput import keyboard
 
 import threading
 
+from Components.Eyetracking_Component import Eyetracking_Component
 from Components.Video_Component import VideoComponent
 from Components.IMU_Component import IMU_Component
+from Components.Audio_Component import AudioComponent
 from viewer import hl2ss
 from viewer import hl2ss_lnm
 from viewer import hl2ss_rus
@@ -627,8 +629,15 @@ if __name__ == "__main__":
 
     video_thread = threading.Thread(target=video_component.video_component_on_invoke)
     video_thread.start()
-    #
+
     imu_thread = threading.Thread(target=imu_Component.imu_component_on_invoke)
     imu_thread.start()
+    audio_component = AudioComponent(mainSys,ip)
+
+    audio_thread = threading.Thread(target=audio_component.audio_component_on_invoke)
+    audio_thread.start()
+    eyetracking_component = Eyetracking_Component(mainSys,ip)
+    eyetracking_thread = threading.Thread(target=eyetracking_component.eye_tracking_component_on_invoke)
+    eyetracking_thread.start()
 
 

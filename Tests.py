@@ -1,3 +1,6 @@
+import os
+
+from openai.types import completion
 from pymilvus import connections, db, MilvusClient
 
 # conn = connections.connect(host="127.0.0.1", port=19530)
@@ -127,3 +130,6 @@ from pymilvus import connections, db
 conn = connections.connect(host="127.0.0.1", port=19530)
 
 print(client.list_collections())
+
+
+

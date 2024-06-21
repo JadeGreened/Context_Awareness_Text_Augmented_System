@@ -21,7 +21,7 @@ import threading
 host = "192.168.3.34"
 
 # Audio encoding profile
-profile = hl2ss.AudioProfile.AAC_24000
+profile = hl2ss.AudioProfile.RAW
 
 #------------------------------------------------------------------------------
 
@@ -57,6 +57,7 @@ client.open()
 while (enable): 
     data = client.get_next_packet()
     # RAW format is s16 packed, AAC decoded format is f32 planar
+    print(data.payload.shape)
     audio = hl2ss_utilities.microphone_planar_to_packed(data.payload) if (profile != hl2ss.AudioProfile.RAW) else data.payload
     pcmqueue.put(audio.tobytes())
 
