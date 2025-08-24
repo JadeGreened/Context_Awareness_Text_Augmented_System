@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-The **Context Awareness Text Augmented System** is an open-source project developed under the guidance of **Professor Junxiao Shen** at the *University of Bristol*'s **BIG Lab**. The system uses **HoloLens 2** as a data collection platform and enables **Real-Time communication** of multimodal data (video, audio, eye-tracking) via a **Peer-to-Peer (P2P) connection** between **XR** and **PC systems**. This project aims to capture and process user behavior in an immersive environment and generate textual descriptions of these actions using AI models. 🤖🎮
+The **Context Awareness Text Augmented System** is an open-source project developed under the guidance of **Professor Junxiao Shen** at the *University of Bristol*'s **BIG Lab**. The system uses **HoloLens 2** as a data collection platform and enables **Real-Time communication** of multimodal data (video, audio, eye-tracking) via a **Peer-to-Peer (P2P) connection** between **XR** and **PC systems** based on HL2SS. This project aims to capture and process user behavior in an immersive environment and generate textual descriptions of these actions using AI models. 🤖🎮
 
 ## Key Features
 
