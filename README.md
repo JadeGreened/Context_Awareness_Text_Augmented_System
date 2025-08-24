@@ -9,7 +9,6 @@ The **Context Awareness Text Augmented System** is an open-source project develo
 - **Real-Time Multimodal Data Communication**: Supports the transmission of video, audio, and eye-tracking data in real-time between **HoloLens 2** and a PC system via a stable **P2P connection**. 🌐
 - **Data to Text AI Models**: Utilizes AI-based models to convert raw multimodal data into text representations of user behavior. 🧠➡️📝
 - **Multithreading for Parallel Data Handling**: Implements multithreading to ensure efficient data processing and timestamp synchronization for accurate communication. 💻⚙️
-- **Question-Answering System**: Uses **LangChain** to create an AI-powered workflow for generating behavior-based question-answering systems, helping users recall daily activities. ❓🤖
 
 ## Installation
 
